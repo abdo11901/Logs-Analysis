@@ -22,11 +22,19 @@ Files explanation
   
   How to run it:  
 ====================
-before doing anything we should create a view called ratio so we will open vagrant then open the "news" database with psql news and then wirte this query:
+before doing anything we should create a view called ratio 
+  * open up your terminal and write the following:
+  * vagrant up
+  * vagrant ssh
+  * cd to the database directory
+  * psql -d news -f newsdata.sql
+  * psql news
+  * then create the view.
+  
+  * How to create the view:
+  * just write the query but you ***should write it in one line*** don't make new lines in the terminal this will case an error.
     
-    create view ratio as select Date(time) as day, cast(sum(case when status != '200 OK' then 1 else 0 end
-    ) as decimal) /cast(count(status) as decimal)*100  as percentage from log l group by day order by percentage d
-    esc ;
+    create view ratio as select Date(time) as day, cast(sum(case when status != '200 OK' then 1 else 0 end) as decimal) /cast(count(status) as decimal)*100  as percentage from log l group by day order by percentage desc ;
 
  1-Run the vagrant: 
   * -vagrant up
