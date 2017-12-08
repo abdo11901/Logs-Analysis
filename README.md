@@ -1,12 +1,13 @@
 Project name:  
 ====================
-Logs-Analysis  
+Logs-Analysis: The database contains newspaper articles, as well as the web server log for the site. The log has a database row for each time a reader loaded a web page. Using that information, your code will answer questions about the site's user activity.
 
 Prerequisite:  
 ====================
 * Python 3
-* vagrant
-* virtualbox  
+* news database https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip
+* vagrant https://www.vagrantup.com/downloads.html
+* virtualbox  https://www.virtualbox.org/wiki/Download_Old_Builds_5_1
 
 Files List:  
 ====================
@@ -44,7 +45,4 @@ before doing anything we should create a view called ratio
   * -python news.py
     
  2-open your browser and write:
-  * -localhost:8000/question-1
-  * -localhost:8000/question-2
-  * -localhost:8000/question-3
-
+  * -localhost:8000/
