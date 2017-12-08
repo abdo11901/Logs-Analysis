@@ -2,7 +2,8 @@
 #
 # This is still NOT the full solution!
 
-import psycopg2, bleach
+import psycopg2
+import bleach
 
 DBNAME = "news"
 
@@ -16,7 +17,7 @@ def get_articles():
         FROM log l INNER JOIN articles a
         ON l.path like concat('%', a.slug)
         WHERE l.status = '200 OK' GROUP BY
-        a.title ORDER BY views DESC;
+        a.title ORDER BY views DESC LIMIT 3;
         ''')
     posts = c.fetchall()
     db.close()
@@ -29,8 +30,8 @@ def get_authors():
     c = db.cursor()
     c.execute('''
         SELECT au.name,count(*) as views FROM log lo
-        INNER JOIN articles ar ON lo.path LIKE 
-        concat('%',ar.slug) INNER JOIN authors au 
+        INNER JOIN articles ar ON lo.path LIKE
+        concat('%',ar.slug) INNER JOIN authors au
         ON ar.author = au.id GROUP BY au.name ORDER BY views DESC ;'''
               )
     posts = c.fetchall()
